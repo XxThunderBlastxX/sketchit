@@ -1,9 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../feature/sketch_canvas/presentation/screens/canvas_screen.dart';
 
 class AppRouter {
   static GoRouter router = GoRouter(
+    initialLocation: "/",
     routes: [
-      // TODO: Add routes here
+      GoRoute(
+        path: "/",
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: const CanvasScreen(),
+        ),
+      )
     ],
   );
 }
