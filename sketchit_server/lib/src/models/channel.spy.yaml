@@ -1,0 +1,8 @@
+### Represents a channel in the system
+class: Channel
+
+table: channel
+
+fields:
+  ### The id of the channel
+  channelId: String
