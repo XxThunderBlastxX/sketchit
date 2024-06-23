@@ -3,25 +3,15 @@ part of 'sketch_bloc.dart';
 sealed class SketchEvent {}
 
 class StartSketch extends SketchEvent {
-  final Offset offset;
+  final SketchStroke sketchStroke;
 
-  StartSketch(this.offset);
+  StartSketch(this.sketchStroke);
 }
 
 class ContinueSketch extends SketchEvent {
-  final Offset offset;
+  final SketchStroke sketchStroke;
 
-  ContinueSketch(this.offset);
+  ContinueSketch(this.sketchStroke);
 }
 
-class ChangeColor extends SketchEvent {
-  final Color color;
-
-  ChangeColor(this.color);
-}
-
-class ChangeStrokeWidth extends SketchEvent {
-  final double strokeWidth;
-
-  ChangeStrokeWidth(this.strokeWidth);
-}
+class EndSketch extends SketchEvent {}

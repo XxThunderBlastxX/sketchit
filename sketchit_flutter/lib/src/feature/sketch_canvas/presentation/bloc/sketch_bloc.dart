@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../model/sketch_stroke.dart';
 
 part 'sketch_event.dart';
 part 'sketch_state.dart';
@@ -7,24 +8,26 @@ part 'sketch_state.dart';
 class SketchBloc extends Bloc<SketchEvent, SketchState> {
   SketchBloc()
       : super(SketchState(
-          points: [],
-          color: Colors.red,
-          strokeWidth: 2.0,
+          sketchStrokes: [],
         )) {
     on<StartSketch>((event, emit) {
-      emit(state.copyWith(points: List.from(state.points)..add(event.offset)));
+      emit(state.copyWith(
+          sketchStrokes: List.from(state.sketchStrokes)
+            ..add(event.sketchStroke)));
     });
 
     on<ContinueSketch>((event, emit) {
-      emit(state.copyWith(points: List.from(state.points)..add(event.offset)));
+      emit(state.copyWith(
+          sketchStrokes: List.from(state.sketchStrokes)
+            ..add(event.sketchStroke)));
     });
 
-    on<ChangeColor>((event, emit) {
-      emit(state.copyWith(color: event.color));
-    });
-
-    on<ChangeStrokeWidth>((event, emit) {
-      emit(state.copyWith(strokeWidth: event.strokeWidth));
+    on<EndSketch>((event, emit) {
+      emit(
+        state.copyWith(
+          sketchStrokes: [...state.sketchStrokes, null],
+        ),
+      );
     });
   }
 }

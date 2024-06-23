@@ -1,52 +1,50 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-class SketchPainter extends CustomPainter {
-  final List<Offset> points;
-  final Color color;
-  final double strokeWidth;
+import '../model/sketch_stroke.dart';
 
-  SketchPainter(
-    this.points,
-    this.color,
-    this.strokeWidth,
-  );
+class SketchPainter extends CustomPainter {
+  final List<SketchStroke?> sketchStrokes;
+
+  SketchPainter(this.sketchStrokes);
+
+  List<Offset> offsetList = [];
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = color
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = strokeWidth;
+    for (int i = 0; i < sketchStrokes.length - 1; i++) {
+      if (sketchStrokes[i] != null && sketchStrokes[i + 1] != null) {
+        final paint = Paint()
+          ..color = sketchStrokes[i]!.color
+          ..strokeWidth = sketchStrokes[i]!.strokeWidth
+          ..strokeCap = StrokeCap.round
+          ..isAntiAlias = true;
 
-    if (points.length == 1) {
-      canvas.drawLine(points[0], points[0], paint);
-      return;
-    }
+        canvas.drawLine(
+          sketchStrokes[i]!.offset,
+          sketchStrokes[i + 1]!.offset,
+          paint,
+        );
+      } else if (sketchStrokes[i] != null && sketchStrokes[i + 1] == null) {
+        offsetList.clear();
+        offsetList.add(sketchStrokes[i]!.offset);
 
-    for (int i = 0; i < points.length - 1; i++) {
-      // var path = Path();
-      //
-      // for (int i = 1; i < points.length - 1; ++i) {
-      //   final p0 = points[i];
-      //   final p1 = points[i + 1];
-      //   path.quadraticBezierTo(
-      //     p0.dx,
-      //     p0.dy,
-      //     (p0.dx + p1.dx) / 2,
-      //     (p0.dy + p1.dy) / 2,
-      //   );
-      // }
-      // path.fillType = PathFillType.evenOdd;
-      // path.moveTo(points[i].dx, points[i].dy);
-      //
-      // canvas.drawPath(path, paint);
-
-      canvas.drawLine(points[i], points[i + 1], paint);
+        canvas.drawPoints(
+          PointMode.points,
+          offsetList,
+          Paint()
+            ..color = sketchStrokes[i]!.color
+            ..strokeWidth = sketchStrokes[i]!.strokeWidth
+            ..strokeCap = StrokeCap.round
+            ..isAntiAlias = true,
+        );
+      }
     }
   }
 
   @override
   bool shouldRepaint(covariant SketchPainter oldDelegate) {
-    return oldDelegate.points != points;
+    return true;
   }
 }
