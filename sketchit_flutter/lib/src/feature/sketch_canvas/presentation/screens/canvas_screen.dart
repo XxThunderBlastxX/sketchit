@@ -46,32 +46,33 @@ class DrawingCanvas extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SketchBloc, SketchState>(
       builder: (context, state) {
-        return GestureDetector(
-          onPanStart: (details) {
-            var sketchStroke = SketchStroke(
-              color: Colors.red,
-              strokeWidth: 2.0,
-              offset: details.localPosition,
-            );
-            context.read<SketchBloc>().add(StartSketch(sketchStroke));
-          },
-          onPanUpdate: (details) {
-            var sketchStroke = SketchStroke(
-              color: Colors.red,
-              strokeWidth: 2.0,
-              offset: details.localPosition,
-            );
-            context.read<SketchBloc>().add(ContinueSketch(sketchStroke));
-          },
-          onPanEnd: (details) {
-            context.read<SketchBloc>().add(EndSketch());
-          },
-          child: InteractiveViewer(
-            minScale: 0.1,
-            maxScale: 3.0,
-            child: CustomPaint(
-              painter: SketchPainter(state.sketchStrokes),
-              child: const SizedBox.expand(),
+        return RepaintBoundary(
+          child: Listener(
+            onPointerDown: (details) {
+              var sketchStroke = SketchStroke(
+                color: Colors.red,
+                strokeWidth: 2.0,
+                offset: details.localPosition,
+              );
+              context.read<SketchBloc>().add(StartSketch(sketchStroke));
+            },
+            onPointerMove: (details) {
+              var sketchStroke = SketchStroke(
+                color: Colors.red,
+                strokeWidth: 2.0,
+                offset: details.localPosition,
+              );
+              context.read<SketchBloc>().add(ContinueSketch(sketchStroke));
+            },
+            onPointerUp: (details) =>
+                context.read<SketchBloc>().add(EndSketch()),
+            child: InteractiveViewer(
+              minScale: 0.1,
+              maxScale: 3.0,
+              child: CustomPaint(
+                painter: SketchPainter(state.sketchStrokes),
+                child: const SizedBox.expand(),
+              ),
             ),
           ),
         );
