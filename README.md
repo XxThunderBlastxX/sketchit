@@ -7,6 +7,8 @@
 - [x] Scribble on the whiteboard
 - [x] Zoom in and out of canvas
 - [ ] Undo and Redo the last scribble
+- [ ] Clear the whiteboard
+- [ ] Change to custom color
 - [ ] Erase the scribbles
 - [ ] Change the color of the scribbles
 - [ ] Change the thickness of the scribbles

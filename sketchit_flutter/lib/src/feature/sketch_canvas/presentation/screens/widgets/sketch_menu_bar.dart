@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'sketch_menu_bar_colors.dart';
+
 class SketchMenuBar extends StatelessWidget {
   const SketchMenuBar({super.key});
 
@@ -34,6 +36,9 @@ class SketchMenuBar extends StatelessWidget {
                 onPressed: () {},
                 tooltip: 'Pen',
               ),
+              const VerticalDivider(),
+              SketchMenuBarColors(),
+              const VerticalDivider(),
               IconButton(
                 icon: const Icon(Icons.minimize_outlined),
                 onPressed: () {},
@@ -54,6 +59,7 @@ class SketchMenuBar extends StatelessWidget {
                 onPressed: () {},
                 tooltip: 'Hexagon',
               ),
+              const VerticalDivider(),
               IconButton(
                 icon: const Icon(Icons.redo),
                 onPressed: () {},
@@ -64,6 +70,7 @@ class SketchMenuBar extends StatelessWidget {
                 onPressed: () {},
                 tooltip: 'Undo',
               ),
+              const VerticalDivider(),
               IconButton(
                 icon: const Icon(Icons.delete_rounded),
                 onPressed: () {},
