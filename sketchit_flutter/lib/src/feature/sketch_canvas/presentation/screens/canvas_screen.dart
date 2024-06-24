@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart' hide MenuBar;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../app/theme/theme.dart';
 import '../bloc/sketch_bloc.dart';
 import '../model/sketch_stroke.dart';
-import './widgets/menu_bar.dart';
 import 'sketch_painter.dart';
+import 'widgets/sketch_menu_bar.dart';
 
 class CanvasScreen extends StatelessWidget {
   const CanvasScreen({super.key});
@@ -12,26 +13,27 @@ class CanvasScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sketch It!'),
-        actions: const [
-          MenuBar(),
-        ],
-      ),
       body: BlocProvider<SketchBloc>(
         create: (context) => SketchBloc(),
         child: Stack(
           children: [
+            const DrawingCanvas(),
+            const SketchMenuBar(),
             Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                padding: const EdgeInsets.all(16),
-                icon: const Icon(Icons.menu),
-                onPressed: () {},
-                tooltip: 'Menu',
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Share',
+                    style: AppTheme.theme.textTheme.labelMedium!.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
             ),
-            const DrawingCanvas()
           ],
         ),
       ),
