@@ -7,6 +7,7 @@
 - [x] Scribble on the whiteboard
 - [x] Zoom in and out of canvas
 - [x] Colour picker
+- [ ] Enter hex color code to pick a color
 - [ ] Undo and Redo the last scribble
 - [ ] Clear the whiteboard
 - [ ] Erase the scribbles

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/theme/theme.dart';
 import '../bloc/sketch_bloc/sketch_bloc.dart';
+import '../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
 import '../model/sketch_stroke.dart';
 import 'sketch_painter.dart';
 import 'widgets/sketch_menu_bar.dart';
@@ -13,8 +14,15 @@ class CanvasScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider<SketchBloc>(
-        create: (context) => SketchBloc(),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<SketchBloc>(
+            create: (context) => SketchBloc(),
+          ),
+          BlocProvider<SketchMenuBarBloc>(
+            create: (context) => SketchMenuBarBloc(),
+          ),
+        ],
         child: Stack(
           children: [
             const DrawingCanvas(),
@@ -46,13 +54,15 @@ class DrawingCanvas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final menuBarBloc = BlocProvider.of<SketchMenuBarBloc>(context);
+
     return BlocBuilder<SketchBloc, SketchState>(
       builder: (context, state) {
         return RepaintBoundary(
           child: Listener(
             onPointerDown: (details) {
               var sketchStroke = SketchStroke(
-                color: Colors.red,
+                color: menuBarBloc.state.color,
                 strokeWidth: 2.0,
                 offset: details.localPosition,
               );
@@ -60,7 +70,7 @@ class DrawingCanvas extends StatelessWidget {
             },
             onPointerMove: (details) {
               var sketchStroke = SketchStroke(
-                color: Colors.red,
+                color: menuBarBloc.state.color,
                 strokeWidth: 2.0,
                 offset: details.localPosition,
               );
