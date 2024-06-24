@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../../../app/theme/theme.dart';
 
 class SketchMenuBarColors extends StatelessWidget {
   SketchMenuBarColors({super.key});
@@ -41,7 +45,47 @@ class SketchMenuBarColors extends StatelessWidget {
           cursor: SystemMouseCursors.click,
           child: GestureDetector(
             onTap: () {
-              // TODO: Implement onTap color picker
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Pick a color'),
+                  contentPadding: const EdgeInsets.all(8.0),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: ColorPicker(
+                          pickerColor: Colors.black,
+                          onColorChanged: (color) {},
+                          hexInputBar: true,
+                          hexInputController:
+                              TextEditingController(), // TODO: Add a controller to change the hex if required
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // TODO: Implement onPressed to pick color
+                              context.pop();
+                            },
+                            child: Text(
+                              'Pick Color',
+                              style:
+                                  AppTheme.theme.textTheme.labelLarge!.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
             },
             child: SvgPicture.asset(
               'assets/svgs/color_wheel.svg',
