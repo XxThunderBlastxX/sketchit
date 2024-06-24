@@ -1,10 +1,13 @@
 part of 'sketch_bloc.dart';
 
-class SketchState {
+class SketchState extends Equatable {
   final List<SketchStroke?> sketchStrokes;
 
-  SketchState({required this.sketchStrokes});
+  const SketchState({required this.sketchStrokes});
 
   SketchState copyWith({required List<SketchStroke?> sketchStrokes}) =>
       SketchState(sketchStrokes: sketchStrokes);
+
+  @override
+  List<Object?> get props => [sketchStrokes];
 }

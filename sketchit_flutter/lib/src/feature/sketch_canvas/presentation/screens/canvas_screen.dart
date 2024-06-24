@@ -2,7 +2,7 @@ import 'package:flutter/material.dart' hide MenuBar;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/theme/theme.dart';
-import '../bloc/sketch_bloc.dart';
+import '../bloc/sketch_bloc/sketch_bloc.dart';
 import '../model/sketch_stroke.dart';
 import 'sketch_painter.dart';
 import 'widgets/sketch_menu_bar.dart';
