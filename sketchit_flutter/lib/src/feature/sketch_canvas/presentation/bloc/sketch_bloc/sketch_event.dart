@@ -24,3 +24,8 @@ class EndSketch extends SketchEvent {
   @override
   List<Object?> get props => [];
 }
+
+class ClearSketch extends SketchEvent {
+  @override
+  List<Object?> get props => [];
+}

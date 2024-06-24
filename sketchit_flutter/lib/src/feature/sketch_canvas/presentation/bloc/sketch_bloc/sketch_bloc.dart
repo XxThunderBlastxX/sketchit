@@ -27,5 +27,9 @@ class SketchBloc extends Bloc<SketchEvent, SketchState> {
         ),
       );
     });
+
+    on<ClearSketch>((event, emit) {
+      emit(const SketchState(sketchStrokes: []));
+    });
   }
 }
