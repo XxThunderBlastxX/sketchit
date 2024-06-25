@@ -11,8 +11,8 @@
 - [x] Clear the whiteboard
 - [x] Draw shapes- Lines, Circles, Rectangles, hexagon
 - [x] Undo and Redo the last scribble
+- [x] Erase the scribbles
 - [ ] Enter hex color code to pick a color
-- [ ] Erase the scribbles
 - [ ] Change the thickness of the scribbles
 - [ ] Export the whiteboard as an image
 - [ ] Real-time collaboration
