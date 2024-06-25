@@ -60,6 +60,16 @@ class SketchMenuBar extends StatelessWidget {
                         ? Colors.blue
                         : Colors.black.withOpacity(0.75),
                   ),
+                  IconButton(
+                    icon: const Icon(Icons.pan_tool_rounded),
+                    onPressed: () => context
+                        .read<SketchMenuBarBloc>()
+                        .add(const ChangeSketchMode(SketchMode.pan)),
+                    tooltip: 'Move',
+                    color: state.sketchMode == SketchMode.pan
+                        ? Colors.blue
+                        : Colors.black,
+                  ),
                   const VerticalDivider(),
                   SketchMenuBarColors(),
                   const VerticalDivider(),

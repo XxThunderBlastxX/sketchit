@@ -1,23 +1,27 @@
 part of 'sketch_menu_bar_bloc.dart';
 
 final class SketchMenuBarState extends Equatable {
-  final Color color;
+  final Color strokeColor;
+  final Color eraserColor;
   final SketchMode sketchMode;
 
   const SketchMenuBarState({
-    required this.color,
+    required this.strokeColor,
     required this.sketchMode,
+    required this.eraserColor,
   });
 
   SketchMenuBarState copyWith({
-    Color? color,
+    Color? strokeColor,
     SketchMode? sketchMode,
+    Color? eraserColor,
   }) =>
       SketchMenuBarState(
-        color: color ?? this.color,
+        strokeColor: strokeColor ?? this.strokeColor,
         sketchMode: sketchMode ?? this.sketchMode,
+        eraserColor: eraserColor ?? this.eraserColor,
       );
 
   @override
-  List<Object> get props => [color, sketchMode];
+  List<Object> get props => [strokeColor, sketchMode];
 }

@@ -49,7 +49,7 @@ class SketchMenuBarColors extends StatelessWidget {
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 onTap: () {
-                  Color pickedColor = state.color;
+                  Color pickedColor = state.strokeColor;
                   final menuBarBloc = context.read<SketchMenuBarBloc>();
                   showDialog(
                     context: context,

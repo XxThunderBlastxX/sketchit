@@ -6,8 +6,12 @@ import '../model/sketch_stroke.dart';
 
 class SketchPainter extends CustomPainter {
   final List<SketchStroke> sketchStrokes;
+  final Matrix4 screenTransformationMatrix;
 
-  const SketchPainter(this.sketchStrokes);
+  const SketchPainter(
+    this.sketchStrokes,
+    this.screenTransformationMatrix,
+  );
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -97,6 +101,8 @@ class SketchPainter extends CustomPainter {
           }
           path.close();
           canvas.drawPath(path, paint);
+          break;
+        case SketchMode.pan:
           break;
       }
     }

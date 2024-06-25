@@ -8,6 +8,9 @@ part 'sketch_event.dart';
 part 'sketch_state.dart';
 
 class SketchBloc extends Bloc<SketchEvent, SketchState> {
+  final TransformationController transformationController =
+      TransformationController();
+
   SketchBloc()
       : super(
           SketchState(
@@ -77,5 +80,12 @@ class SketchBloc extends Bloc<SketchEvent, SketchState> {
         historySketches: updatedHistorySketches,
       ));
     });
+  }
+
+  @override
+  Future<void> close() async {
+    await super.close();
+    transformationController.dispose();
+    return;
   }
 }

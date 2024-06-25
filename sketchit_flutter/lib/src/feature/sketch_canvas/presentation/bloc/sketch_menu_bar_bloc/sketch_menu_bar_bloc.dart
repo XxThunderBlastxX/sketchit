@@ -10,24 +10,25 @@ part 'sketch_menu_bar_state.dart';
 
 class SketchMenuBarBloc extends Bloc<SketchMenuBarEvent, SketchMenuBarState> {
   SketchMenuBarBloc()
-      : super(const SketchMenuBarState(
-          color: Colors.black,
+      : super(SketchMenuBarState(
+          strokeColor: Colors.black,
           sketchMode: SketchMode.draw,
+          eraserColor: AppTheme.theme.colorScheme.surface,
         )) {
     on<ChangeColor>((event, emit) {
       emit(state.copyWith(
-        color: event.color,
+        strokeColor: event.color,
       ));
     });
 
     on<ChangeSketchMode>((event, emit) {
-      if (event.sketchMode == SketchMode.erase) {
-        emit(state.copyWith(
-          sketchMode: event.sketchMode,
-          color: AppTheme.theme.colorScheme.surface,
-        ));
-        return;
-      }
+      // if (event.sketchMode == SketchMode.erase) {
+      //   emit(state.copyWith(
+      //     sketchMode: event.sketchMode,
+      //     strokeColor: ,
+      //   ));
+      //   return;
+      // }
       emit(state.copyWith(
         sketchMode: event.sketchMode,
       ));

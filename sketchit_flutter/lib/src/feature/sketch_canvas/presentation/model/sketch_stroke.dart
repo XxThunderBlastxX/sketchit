@@ -7,6 +7,7 @@ enum SketchMode {
   rectangle,
   line,
   hexagon,
+  pan,
 }
 
 /// Represents a stroke in the sketch canvas.
