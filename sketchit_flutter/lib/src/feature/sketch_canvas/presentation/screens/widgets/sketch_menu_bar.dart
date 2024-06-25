@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:icons_plus/icons_plus.dart';
 
 import '../../bloc/sketch_bloc/sketch_bloc.dart';
 import '../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
@@ -51,7 +50,10 @@ class SketchMenuBar extends StatelessWidget {
                         : Colors.black,
                   ),
                   IconButton(
-                    icon: const Icon(FontAwesome.eraser_solid),
+                    icon: const Icon(IconData(
+                      59648,
+                      fontFamily: 'icomoon',
+                    )),
                     onPressed: () => context
                         .read<SketchMenuBarBloc>()
                         .add(const ChangeSketchMode(SketchMode.erase)),
