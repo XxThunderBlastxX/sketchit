@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../model/sketch_stroke.dart';
@@ -10,21 +12,27 @@ class SketchPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     for (SketchStroke sketchStroke in sketchStrokes) {
+      // Skip empty strokes
+      if (sketchStroke.offsetList.isEmpty) {
+        continue;
+      }
+
       final paint = Paint()
         ..color = sketchStroke.color
         ..strokeWidth = sketchStroke.strokeWidth
         ..strokeCap = StrokeCap.round
         ..isAntiAlias = true;
 
-      if (sketchStroke.offsetList.isEmpty) {
-        continue;
-      }
-
       final firstOffset = sketchStroke.offsetList.first;
       final lastOffset = sketchStroke.offsetList.last;
 
       switch (sketchStroke.sketchMode) {
         case SketchMode.draw:
+          canvas.drawPoints(
+            PointMode.polygon,
+            sketchStroke.offsetList,
+            paint,
+          );
           break;
         case SketchMode.erase:
           break;
