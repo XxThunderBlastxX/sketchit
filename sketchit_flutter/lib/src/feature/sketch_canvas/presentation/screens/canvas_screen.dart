@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide MenuBar;
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/theme/theme.dart';
@@ -26,13 +27,18 @@ class CanvasScreen extends StatelessWidget {
         child: Stack(
           children: [
             const DrawingCanvas(),
-            const SketchMenuBar(),
+            const SketchMenuBar()
+                .animate()
+                .fadeIn(duration: const Duration(milliseconds: 500))
+                .moveY(begin: 25, end: 0),
             Align(
               alignment: Alignment.topRight,
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // TODO: Implement share functionality
+                  },
                   child: Text(
                     'Share',
                     style: AppTheme.theme.textTheme.labelMedium!.copyWith(
@@ -41,7 +47,10 @@ class CanvasScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
+            )
+                .animate()
+                .fadeIn(duration: const Duration(milliseconds: 500))
+                .moveX(begin: 25, end: 0),
           ],
         ),
       ),
