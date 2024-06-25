@@ -64,7 +64,7 @@ class DrawingCanvas extends StatelessWidget {
   void _onPointerDown(
     PointerDownEvent details,
     BuildContext context,
-    SketchMenuBarBloc menuBarBloc,
+    SketchMenuBarState menuBarState,
   ) {
     final transformedOffset = context
         .read<SketchBloc>()
@@ -72,12 +72,12 @@ class DrawingCanvas extends StatelessWidget {
         .toScene(details.position);
 
     final sketchStroke = SketchStroke(
-      color: menuBarBloc.state.sketchMode == SketchMode.erase
-          ? menuBarBloc.state.eraserColor
-          : menuBarBloc.state.strokeColor,
+      color: menuBarState.sketchMode == SketchMode.erase
+          ? menuBarState.eraserColor
+          : menuBarState.strokeColor,
       strokeWidth: 2.0,
       offsetList: [transformedOffset],
-      sketchMode: menuBarBloc.state.sketchMode,
+      sketchMode: menuBarState.sketchMode,
     );
     context.read<SketchBloc>().add(StartSketch(sketchStroke));
   }
@@ -85,7 +85,7 @@ class DrawingCanvas extends StatelessWidget {
   void _onPointerMove(
     PointerMoveEvent details,
     BuildContext context,
-    SketchMenuBarBloc menuBarBloc,
+    SketchMenuBarState menuBarState,
     SketchState state,
   ) {
     final transformedOffset = context
@@ -94,53 +94,62 @@ class DrawingCanvas extends StatelessWidget {
         .toScene(details.position);
 
     var sketchStroke = SketchStroke(
-      color: menuBarBloc.state.sketchMode == SketchMode.erase
-          ? menuBarBloc.state.eraserColor
-          : menuBarBloc.state.strokeColor,
+      color: menuBarState.sketchMode == SketchMode.erase
+          ? menuBarState.eraserColor
+          : menuBarState.strokeColor,
       strokeWidth: 2.0,
       offsetList: List.from(state.currentSketchStroke.offsetList)
         ..add(transformedOffset),
-      sketchMode: menuBarBloc.state.sketchMode,
+      sketchMode: menuBarState.sketchMode,
     );
     context.read<SketchBloc>().add(ContinueSketch(sketchStroke));
   }
 
   @override
   Widget build(BuildContext context) {
-    final menuBarBloc = BlocProvider.of<SketchMenuBarBloc>(context);
-
-    return BlocBuilder<SketchBloc, SketchState>(
-      builder: (context, state) {
-        return RepaintBoundary(
-          child: Listener(
-            onPointerDown: (details) => _onPointerDown(
-              details,
-              context,
-              menuBarBloc,
-            ),
-            onPointerMove: (details) => _onPointerMove(
-              details,
-              context,
-              menuBarBloc,
-              state,
-            ),
-            onPointerUp: (_) => context.read<SketchBloc>().add(EndSketch()),
-            child: InteractiveViewer(
-              minScale: 0.1,
-              maxScale: 3.0,
-              panEnabled: menuBarBloc.state.sketchMode == SketchMode.pan,
-              transformationController:
-                  context.read<SketchBloc>().transformationController,
-              child: CustomPaint(
-                painter: SketchPainter(
-                  List.from(state.sketchStrokes)
-                    ..add(state.currentSketchStroke),
-                  context.read<SketchBloc>().transformationController.value,
+    return BlocBuilder<SketchMenuBarBloc, SketchMenuBarState>(
+      builder: (context, menuBarState) {
+        return BlocBuilder<SketchBloc, SketchState>(
+          builder: (context, sketchState) {
+            return RepaintBoundary(
+              child: Listener(
+                onPointerDown: (details) => _onPointerDown(
+                  details,
+                  context,
+                  menuBarState,
                 ),
-                child: const SizedBox.expand(),
+                onPointerMove: (details) => _onPointerMove(
+                  details,
+                  context,
+                  menuBarState,
+                  sketchState,
+                ),
+                onPointerUp: (_) => context.read<SketchBloc>().add(EndSketch()),
+                child: MouseRegion(
+                  cursor: menuBarState.sketchMode.systemCursor,
+                  onHover: (enter) {},
+                  child: InteractiveViewer(
+                    minScale: 0.1,
+                    maxScale: 3.0,
+                    panEnabled: menuBarState.sketchMode == SketchMode.pan,
+                    transformationController:
+                        context.read<SketchBloc>().transformationController,
+                    child: CustomPaint(
+                      painter: SketchPainter(
+                        List.from(sketchState.sketchStrokes)
+                          ..add(sketchState.currentSketchStroke),
+                        context
+                            .read<SketchBloc>()
+                            .transformationController
+                            .value,
+                      ),
+                      child: const SizedBox.expand(),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
+            );
+          },
         );
       },
     );
