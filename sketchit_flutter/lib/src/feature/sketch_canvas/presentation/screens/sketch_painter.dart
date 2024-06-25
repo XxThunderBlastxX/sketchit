@@ -1,5 +1,4 @@
 import 'dart:math' as math;
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -16,6 +15,24 @@ class SketchPainter extends CustomPainter {
       // Skip empty strokes
       if (sketchStroke.offsetList.isEmpty) {
         continue;
+      }
+
+      final path = Path()
+        ..moveTo(
+          sketchStroke.offsetList.first.dx,
+          sketchStroke.offsetList.first.dy,
+        );
+
+      for (int i = 1; i < sketchStroke.offsetList.length - 1; ++i) {
+        final p0 = sketchStroke.offsetList[i];
+        final p1 = sketchStroke.offsetList[i + 1];
+
+        path.quadraticBezierTo(
+          p0.dx,
+          p0.dy,
+          (p0.dx + p1.dx) / 2,
+          (p0.dy + p1.dy) / 2,
+        );
       }
 
       final paint = Paint()
@@ -40,11 +57,7 @@ class SketchPainter extends CustomPainter {
 
       switch (sketchStroke.sketchMode) {
         case SketchMode.draw:
-          canvas.drawPoints(
-            PointMode.polygon,
-            sketchStroke.offsetList,
-            paint,
-          );
+          canvas.drawPath(path, paint);
           break;
         case SketchMode.line:
           canvas.drawLine(
@@ -54,7 +67,7 @@ class SketchPainter extends CustomPainter {
           );
           break;
         case SketchMode.erase:
-          // TODO: Implement erase mode
+          canvas.drawPath(path, paint);
           break;
         case SketchMode.circle:
           canvas.drawCircle(centerOffset, radius, paint);
