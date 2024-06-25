@@ -64,7 +64,8 @@ class DrawingCanvas extends StatelessWidget {
               var sketchStroke = SketchStroke(
                 color: menuBarBloc.state.color,
                 strokeWidth: 2.0,
-                offset: details.localPosition,
+                offsetList: [details.position],
+                sketchMode: menuBarBloc.state.sketchMode,
               );
               context.read<SketchBloc>().add(StartSketch(sketchStroke));
             },
@@ -72,17 +73,19 @@ class DrawingCanvas extends StatelessWidget {
               var sketchStroke = SketchStroke(
                 color: menuBarBloc.state.color,
                 strokeWidth: 2.0,
-                offset: details.localPosition,
+                offsetList: List.from(state.currentSketchStroke.offsetList)
+                  ..add(details.position),
+                sketchMode: menuBarBloc.state.sketchMode,
               );
               context.read<SketchBloc>().add(ContinueSketch(sketchStroke));
             },
-            onPointerUp: (details) =>
-                context.read<SketchBloc>().add(EndSketch()),
+            onPointerUp: (_) => context.read<SketchBloc>().add(EndSketch()),
             child: InteractiveViewer(
               minScale: 0.1,
               maxScale: 3.0,
               child: CustomPaint(
-                painter: SketchPainter(state.sketchStrokes),
+                painter: SketchPainter(List.from(state.sketchStrokes)
+                  ..add(state.currentSketchStroke)),
                 child: const SizedBox.expand(),
               ),
             ),

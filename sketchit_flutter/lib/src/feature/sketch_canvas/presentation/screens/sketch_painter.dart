@@ -1,44 +1,46 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../model/sketch_stroke.dart';
 
 class SketchPainter extends CustomPainter {
-  final List<SketchStroke?> sketchStrokes;
+  final List<SketchStroke> sketchStrokes;
 
-  SketchPainter(this.sketchStrokes);
-
-  List<Offset> offsetList = [];
+  const SketchPainter(this.sketchStrokes);
 
   @override
   void paint(Canvas canvas, Size size) {
-    for (int i = 0; i < sketchStrokes.length - 1; i++) {
-      if (sketchStrokes[i] != null && sketchStrokes[i + 1] != null) {
-        final paint = Paint()
-          ..color = sketchStrokes[i]!.color
-          ..strokeWidth = sketchStrokes[i]!.strokeWidth
-          ..strokeCap = StrokeCap.round
-          ..isAntiAlias = true;
+    for (SketchStroke sketchStroke in sketchStrokes) {
+      final paint = Paint()
+        ..color = sketchStroke.color
+        ..strokeWidth = sketchStroke.strokeWidth
+        ..strokeCap = StrokeCap.round
+        ..isAntiAlias = true;
 
-        canvas.drawLine(
-          sketchStrokes[i]!.offset,
-          sketchStrokes[i + 1]!.offset,
-          paint,
-        );
-      } else if (sketchStrokes[i] != null && sketchStrokes[i + 1] == null) {
-        offsetList.clear();
-        offsetList.add(sketchStrokes[i]!.offset);
+      if (sketchStroke.offsetList.isEmpty) {
+        continue;
+      }
 
-        canvas.drawPoints(
-          PointMode.points,
-          offsetList,
-          Paint()
-            ..color = sketchStrokes[i]!.color
-            ..strokeWidth = sketchStrokes[i]!.strokeWidth
-            ..strokeCap = StrokeCap.round
-            ..isAntiAlias = true,
-        );
+      final firstOffset = sketchStroke.offsetList.first;
+      final lastOffset = sketchStroke.offsetList.last;
+
+      switch (sketchStroke.sketchMode) {
+        case SketchMode.draw:
+          break;
+        case SketchMode.erase:
+          break;
+        case SketchMode.circle:
+          break;
+        case SketchMode.rectangle:
+          break;
+        case SketchMode.line:
+          canvas.drawLine(
+            firstOffset,
+            lastOffset,
+            paint,
+          );
+          break;
+        case SketchMode.hexagon:
+          break;
       }
     }
   }

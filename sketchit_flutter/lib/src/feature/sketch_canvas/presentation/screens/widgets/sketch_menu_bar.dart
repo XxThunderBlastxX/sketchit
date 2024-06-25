@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/sketch_bloc/sketch_bloc.dart';
+import '../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
+import '../../model/sketch_stroke.dart';
 import 'sketch_menu_bar_colors.dart';
 
 class SketchMenuBar extends StatelessWidget {
@@ -9,7 +11,9 @@ class SketchMenuBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SketchBloc, SketchState>(
+    final sketchBloc = BlocProvider.of<SketchBloc>(context);
+
+    return BlocBuilder<SketchMenuBarBloc, SketchMenuBarState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(18.0),
@@ -37,31 +41,56 @@ class SketchMenuBar extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.edit),
-                    onPressed: () {},
+                    onPressed: () => context
+                        .read<SketchMenuBarBloc>()
+                        .add(const ChangeSketchMode(SketchMode.draw)),
                     tooltip: 'Pen',
+                    color: state.sketchMode == SketchMode.draw
+                        ? Colors.blue
+                        : Colors.black,
                   ),
                   const VerticalDivider(),
                   SketchMenuBarColors(),
                   const VerticalDivider(),
                   IconButton(
                     icon: const Icon(Icons.minimize_outlined),
-                    onPressed: () {},
+                    onPressed: () => context
+                        .read<SketchMenuBarBloc>()
+                        .add(const ChangeSketchMode(SketchMode.line)),
                     tooltip: 'Line',
+                    color: state.sketchMode == SketchMode.line
+                        ? Colors.blue
+                        : Colors.black,
                   ),
                   IconButton(
                     icon: const Icon(Icons.circle_outlined),
-                    onPressed: () {},
+                    onPressed: () => context
+                        .read<SketchMenuBarBloc>()
+                        .add(const ChangeSketchMode(SketchMode.circle)),
                     tooltip: 'Circle',
+                    color: state.sketchMode == SketchMode.circle
+                        ? Colors.blue
+                        : Colors.black,
                   ),
                   IconButton(
                     icon: const Icon(Icons.rectangle_outlined),
-                    onPressed: () {},
+                    onPressed: () => context
+                        .read<SketchMenuBarBloc>()
+                        .add(const ChangeSketchMode(SketchMode.rectangle)),
                     tooltip: 'Rectangle',
+                    color: state.sketchMode == SketchMode.rectangle
+                        ? Colors.blue
+                        : Colors.black,
                   ),
                   IconButton(
                     icon: const Icon(Icons.hexagon_outlined),
-                    onPressed: () {},
+                    onPressed: () => context
+                        .read<SketchMenuBarBloc>()
+                        .add(const ChangeSketchMode(SketchMode.hexagon)),
                     tooltip: 'Hexagon',
+                    color: state.sketchMode == SketchMode.hexagon
+                        ? Colors.blue
+                        : Colors.black,
                   ),
                   const VerticalDivider(),
                   IconButton(

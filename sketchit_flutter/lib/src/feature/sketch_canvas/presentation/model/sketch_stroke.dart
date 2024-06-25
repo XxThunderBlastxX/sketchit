@@ -11,13 +11,15 @@ enum SketchMode {
 
 /// Represents a stroke in the sketch canvas.
 class SketchStroke {
-  final Offset offset;
+  final List<Offset> offsetList;
   final Color color;
   final double strokeWidth;
+  final SketchMode sketchMode;
 
   SketchStroke({
-    required this.offset,
+    required this.offsetList,
     required this.color,
     required this.strokeWidth,
+    required this.sketchMode,
   });
 }
