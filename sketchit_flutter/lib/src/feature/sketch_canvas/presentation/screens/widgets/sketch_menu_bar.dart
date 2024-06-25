@@ -95,12 +95,12 @@ class SketchMenuBar extends StatelessWidget {
                   const VerticalDivider(),
                   IconButton(
                     icon: const Icon(Icons.redo),
-                    onPressed: () {},
+                    onPressed: () => sketchBloc.add(RedoSketch()),
                     tooltip: 'Redo',
                   ),
                   IconButton(
                     icon: const Icon(Icons.undo),
-                    onPressed: () {},
+                    onPressed: () => sketchBloc.add(UndoSketch()),
                     tooltip: 'Undo',
                   ),
                   const VerticalDivider(),

@@ -10,8 +10,8 @@
 - [x] Change the color of the scribbles
 - [x] Clear the whiteboard
 - [x] Draw shapes- Lines, Circles, Rectangles, hexagon
+- [x] Undo and Redo the last scribble
 - [ ] Enter hex color code to pick a color
-- [ ] Undo and Redo the last scribble
 - [ ] Erase the scribbles
 - [ ] Change the thickness of the scribbles
 - [ ] Export the whiteboard as an image

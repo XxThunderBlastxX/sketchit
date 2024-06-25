@@ -29,3 +29,13 @@ class ClearSketch extends SketchEvent {
   @override
   List<Object?> get props => [];
 }
+
+class UndoSketch extends SketchEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class RedoSketch extends SketchEvent {
+  @override
+  List<Object?> get props => [];
+}
