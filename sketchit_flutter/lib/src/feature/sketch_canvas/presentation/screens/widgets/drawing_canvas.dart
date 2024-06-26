@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../app/service/service_locator.dart';
+import '../../../../../app/utils/custom_cursor.dart';
 import '../../bloc/sketch_bloc/sketch_bloc.dart';
 import '../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
 import '../../model/sketch_stroke.dart';
@@ -74,8 +76,9 @@ class DrawingCanvas extends StatelessWidget {
                 ),
                 onPointerUp: (_) => context.read<SketchBloc>().add(EndSketch()),
                 child: MouseRegion(
-                  cursor: menuBarState.sketchMode.systemCursor,
-                  onHover: (enter) {},
+                  cursor: sl
+                      .get<CustomCursor>()
+                      .getCustomCursor(menuBarState.sketchMode),
                   child: InteractiveViewer(
                     minScale: 0.1,
                     maxScale: 3.0,
