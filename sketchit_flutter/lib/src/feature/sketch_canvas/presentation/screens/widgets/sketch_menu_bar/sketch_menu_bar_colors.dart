@@ -3,14 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
-import '../../../../../app/theme/theme.dart';
-import '../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
+import '../../../../../../app/theme/theme.dart';
+import '../../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
 
 class SketchMenuBarColors extends StatelessWidget {
   SketchMenuBarColors({super.key});
 
-  final List<Color> _colors = [
+  final List<Color> _desktopColors = [
     Colors.black,
     Colors.red,
     Colors.green,
@@ -20,13 +21,26 @@ class SketchMenuBarColors extends StatelessWidget {
     Colors.orange,
   ];
 
+  final List<Color> _tabColors = [
+    Colors.black,
+    Colors.red,
+    Colors.green,
+    Colors.blue,
+  ];
+
   @override
   Widget build(BuildContext context) {
+    final colors = getValueForScreenType<List<Color>>(
+      context: context,
+      mobile: [],
+      tablet: _tabColors,
+      desktop: _desktopColors,
+    );
     return BlocBuilder<SketchMenuBarBloc, SketchMenuBarState>(
       builder: (context, state) {
         return Row(
           children: [
-            ..._colors.map(
+            ...colors.map(
               (c) => MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(

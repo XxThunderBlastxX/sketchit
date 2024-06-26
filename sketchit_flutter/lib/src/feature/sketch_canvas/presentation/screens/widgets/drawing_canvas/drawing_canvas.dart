@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
-import '../../../../../app/service/service_locator.dart';
-import '../../../../../app/utils/custom_cursor.dart';
-import '../../bloc/sketch_bloc/sketch_bloc.dart';
-import '../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
-import '../../model/sketch_stroke.dart';
-import '../sketch_painter.dart';
+import '../../../bloc/sketch_bloc/sketch_bloc.dart';
+import '../../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
+import '../../../model/sketch_stroke.dart';
+import 'drawing_canvas_desktop.dart';
+import 'drawing_canvas_mobile.dart';
+import 'drawing_canvas_tab.dart';
 
 class DrawingCanvas extends StatelessWidget {
   const DrawingCanvas({super.key});
@@ -75,27 +76,18 @@ class DrawingCanvas extends StatelessWidget {
                   sketchState,
                 ),
                 onPointerUp: (_) => context.read<SketchBloc>().add(EndSketch()),
-                child: MouseRegion(
-                  cursor: sl
-                      .get<CustomCursor>()
-                      .getCustomCursor(menuBarState.sketchMode),
-                  child: InteractiveViewer(
-                    minScale: 0.1,
-                    maxScale: 3.0,
-                    panEnabled: menuBarState.sketchMode == SketchMode.pan,
-                    transformationController:
-                        context.read<SketchBloc>().transformationController,
-                    child: CustomPaint(
-                      painter: SketchPainter(
-                        List.from(sketchState.sketchStrokes)
-                          ..add(sketchState.currentSketchStroke),
-                        context
-                            .read<SketchBloc>()
-                            .transformationController
-                            .value,
-                      ),
-                      child: const SizedBox.expand(),
-                    ),
+                child: ScreenTypeLayout.builder(
+                  mobile: (context) => DrawingCanvasMobile(
+                    menuBarState: menuBarState,
+                    sketchState: sketchState,
+                  ),
+                  tablet: (context) => DrawingCanvasTab(
+                    menuBarState: menuBarState,
+                    sketchState: sketchState,
+                  ),
+                  desktop: (context) => DrawingCanvasDesktop(
+                    menuBarState: menuBarState,
+                    sketchState: sketchState,
                   ),
                 ),
               ),
