@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:sketchit_flutter/src/app/utils/launch_url.dart';
 
 import '../../../../../../app/theme/theme.dart';
 
@@ -33,7 +34,9 @@ class SketchSideBarCreditsCategory extends StatelessWidget {
                   style: AppTheme.theme.textTheme.labelMedium!.copyWith(
                     color: Colors.purple,
                   ),
-                  recognizer: TapGestureRecognizer()..onTap = () {},
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () =>
+                        launchBrowser("https://github.com/XxThunderBlastxX"),
                 ),
               ],
             ),
@@ -56,7 +59,9 @@ class SketchSideBarCreditsCategory extends StatelessWidget {
                   style: AppTheme.theme.textTheme.labelMedium!.copyWith(
                     color: Colors.purple,
                   ),
-                  recognizer: TapGestureRecognizer()..onTap = () {},
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () => launchBrowser(
+                        "https://github.com/XxThunderBlastxX/sketchit"),
                 ),
               ],
             ),

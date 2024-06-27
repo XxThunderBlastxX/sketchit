@@ -13,8 +13,8 @@
 - [x] Undo and Redo the last scribble
 - [x] Erase the scribbles
 - [x] Responsive to multiplatform support
+- [x] Change the thickness of the scribbles
 - [ ] Enter hex color code to pick a color
-- [ ] Change the thickness of the scribbles
 - [ ] Export the whiteboard as an image
 - [ ] Real-time collaboration
 

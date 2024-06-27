@@ -26,18 +26,23 @@ class SketchSideBar extends StatelessWidget {
                 duration: const Duration(milliseconds: 600),
                 curve: Curves.easeInOut,
                 transform: sideBarState.isSideBarOpen
-                    ? Matrix4.translationValues(3.sw, -4.sh, 0)
+                    ? getValueForScreenType(
+                        context: context,
+                        mobile: Matrix4.translationValues(3.sw, -8.sh, 0),
+                        desktop: Matrix4.translationValues(3.sw, -6.sh, 0),
+                        tablet: Matrix4.translationValues(3.sw, -6.sh, 0),
+                      )
                     : getValueForScreenType(
                         context: context,
-                        mobile: Matrix4.translationValues(-65.sw, -4.sh, 0),
-                        desktop: Matrix4.translationValues(-45.sw, -4.sh, 0),
-                        tablet: Matrix4.translationValues(-45.sw, -4.sh, 0),
+                        mobile: Matrix4.translationValues(-65.sw, -8.sh, 0),
+                        desktop: Matrix4.translationValues(-45.sw, -6.sh, 0),
+                        tablet: Matrix4.translationValues(-48.sw, -6.sh, 0),
                       ),
                 width: getValueForScreenType(
                   context: context,
                   mobile: 65.sw,
                   desktop: 45.sw,
-                  tablet: 45.sw,
+                  tablet: 48.sw,
                 ),
                 padding: const EdgeInsets.all(12.0),
                 decoration: BoxDecoration(
