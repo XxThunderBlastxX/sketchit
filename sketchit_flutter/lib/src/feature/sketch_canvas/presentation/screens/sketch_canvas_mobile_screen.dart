@@ -12,39 +12,41 @@ class SketchCanvasMobileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const DrawingCanvas(),
-        const SideBarButton()
-            .animate()
-            .fadeIn(duration: const Duration(milliseconds: 500))
-            .moveX(begin: -35, end: 0),
-        const SketchSideBar(),
-        const SketchMenuBar()
-            .animate()
-            .fadeIn(duration: const Duration(milliseconds: 500))
-            .moveY(begin: 25, end: 0),
-        Align(
-          alignment: Alignment.topRight,
-          child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // TODO: Implement share functionality
-              },
-              child: Text(
-                'Share',
-                style: AppTheme.theme.textTheme.labelMedium!.copyWith(
-                  color: Colors.white,
+    return SafeArea(
+      child: Stack(
+        children: [
+          const DrawingCanvas(),
+          const SketchMenuBar()
+              .animate()
+              .fadeIn(duration: const Duration(milliseconds: 500))
+              .moveY(begin: 25, end: 0),
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  // TODO: Implement share functionality
+                },
+                child: Text(
+                  'Share',
+                  style: AppTheme.theme.textTheme.labelMedium!.copyWith(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
-          ),
-        )
-            .animate()
-            .fadeIn(duration: const Duration(milliseconds: 500))
-            .moveX(begin: 25, end: 0),
-      ],
+          )
+              .animate()
+              .fadeIn(duration: const Duration(milliseconds: 500))
+              .moveX(begin: 25, end: 0),
+          const SideBarButton()
+              .animate()
+              .fadeIn(duration: const Duration(milliseconds: 500))
+              .moveX(begin: -35, end: 0),
+          const SketchSideBar(),
+        ],
+      ),
     );
   }
 }

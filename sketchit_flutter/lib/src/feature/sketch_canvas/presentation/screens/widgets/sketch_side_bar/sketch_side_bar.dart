@@ -28,19 +28,19 @@ class SketchSideBar extends StatelessWidget {
                 transform: sideBarState.isSideBarOpen
                     ? getValueForScreenType(
                         context: context,
-                        mobile: Matrix4.translationValues(3.sw, -8.sh, 0),
+                        mobile: Matrix4.translationValues(3.sw, -6.sh, 0),
                         desktop: Matrix4.translationValues(3.sw, -6.sh, 0),
                         tablet: Matrix4.translationValues(3.sw, -6.sh, 0),
                       )
                     : getValueForScreenType(
                         context: context,
-                        mobile: Matrix4.translationValues(-65.sw, -8.sh, 0),
+                        mobile: Matrix4.translationValues(-82.sw, -6.sh, 0),
                         desktop: Matrix4.translationValues(-45.sw, -6.sh, 0),
                         tablet: Matrix4.translationValues(-48.sw, -6.sh, 0),
                       ),
                 width: getValueForScreenType(
                   context: context,
-                  mobile: 65.sw,
+                  mobile: 82.sw,
                   desktop: 45.sw,
                   tablet: 48.sw,
                 ),

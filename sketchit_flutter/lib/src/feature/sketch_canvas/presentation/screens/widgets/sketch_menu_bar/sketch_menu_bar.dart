@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import '../../../../../../app/theme/theme.dart';
 import '../../../bloc/sketch_bloc/sketch_bloc.dart';
 import '../../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
 import '../../../model/sketch_stroke.dart';
@@ -44,7 +45,7 @@ class SketchMenuBar extends StatelessWidget {
                           .add(const ChangeSketchMode(SketchMode.draw)),
                       tooltip: 'Pen',
                       color: state.sketchMode == SketchMode.draw
-                          ? Colors.blue
+                          ? AppTheme.primaryColor
                           : Colors.black,
                     ),
                     IconButton(
@@ -57,7 +58,7 @@ class SketchMenuBar extends StatelessWidget {
                           .add(const ChangeSketchMode(SketchMode.erase)),
                       tooltip: 'Eraser',
                       color: state.sketchMode == SketchMode.erase
-                          ? Colors.blue
+                          ? AppTheme.primaryColor
                           : Colors.black.withOpacity(0.75),
                     ),
                     IconButton(
@@ -67,7 +68,7 @@ class SketchMenuBar extends StatelessWidget {
                           .add(const ChangeSketchMode(SketchMode.pan)),
                       tooltip: 'Move',
                       color: state.sketchMode == SketchMode.pan
-                          ? Colors.blue
+                          ? AppTheme.primaryColor
                           : Colors.black,
                     ),
                     const VerticalDivider(),
@@ -104,7 +105,7 @@ class SketchMenuBar extends StatelessWidget {
                                 .add(const ChangeSketchMode(SketchMode.line)),
                             tooltip: 'Line',
                             color: state.sketchMode == SketchMode.line
-                                ? Colors.blue
+                                ? AppTheme.primaryColor
                                 : Colors.black,
                           ),
                           IconButton(
@@ -114,7 +115,7 @@ class SketchMenuBar extends StatelessWidget {
                                 .add(const ChangeSketchMode(SketchMode.circle)),
                             tooltip: 'Circle',
                             color: state.sketchMode == SketchMode.circle
-                                ? Colors.blue
+                                ? AppTheme.primaryColor
                                 : Colors.black,
                           ),
                           IconButton(
@@ -125,7 +126,7 @@ class SketchMenuBar extends StatelessWidget {
                                     SketchMode.rectangle)),
                             tooltip: 'Rectangle',
                             color: state.sketchMode == SketchMode.rectangle
-                                ? Colors.blue
+                                ? AppTheme.primaryColor
                                 : Colors.black,
                           ),
                           IconButton(
@@ -136,7 +137,7 @@ class SketchMenuBar extends StatelessWidget {
                                     const ChangeSketchMode(SketchMode.hexagon)),
                             tooltip: 'Hexagon',
                             color: state.sketchMode == SketchMode.hexagon
-                                ? Colors.blue
+                                ? AppTheme.primaryColor
                                 : Colors.black,
                           ),
                         ],

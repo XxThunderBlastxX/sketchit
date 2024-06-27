@@ -15,11 +15,6 @@ class SketchCanvasTabScreen extends StatelessWidget {
     return Stack(
       children: [
         const DrawingCanvas(),
-        const SideBarButton()
-            .animate()
-            .fadeIn(duration: const Duration(milliseconds: 500))
-            .moveX(begin: -35, end: 0),
-        const SketchSideBar(),
         const SketchMenuBar()
             .animate()
             .fadeIn(duration: const Duration(milliseconds: 500))
@@ -44,6 +39,11 @@ class SketchCanvasTabScreen extends StatelessWidget {
             .animate()
             .fadeIn(duration: const Duration(milliseconds: 500))
             .moveX(begin: 25, end: 0),
+        const SideBarButton()
+            .animate()
+            .fadeIn(duration: const Duration(milliseconds: 500))
+            .moveX(begin: -35, end: 0),
+        const SketchSideBar(),
       ],
     );
   }
