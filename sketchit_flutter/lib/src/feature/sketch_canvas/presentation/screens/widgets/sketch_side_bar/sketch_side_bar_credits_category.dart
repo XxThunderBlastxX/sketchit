@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:sketchit_flutter/src/app/utils/launch_url.dart';
 
 import '../../../../../../app/theme/theme.dart';
+import '../../../../../../app/utils/launch_url.dart';
 
 class SketchSideBarCreditsCategory extends StatelessWidget {
   const SketchSideBarCreditsCategory({super.key});
