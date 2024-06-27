@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../app/theme/theme.dart';
 import 'widgets/drawing_canvas/drawing_canvas.dart';
 import 'widgets/sketch_menu_bar/sketch_menu_bar.dart';
+import 'widgets/sketch_side_bar/sketch_side_bar.dart';
 
 class SketchCanvasDesktopScreen extends StatelessWidget {
   const SketchCanvasDesktopScreen({super.key});
@@ -13,6 +14,14 @@ class SketchCanvasDesktopScreen extends StatelessWidget {
     return Stack(
       children: [
         const DrawingCanvas(),
+        // Align(
+        //   alignment: Alignment.topLeft,
+        //   child: IconButton(
+        //     onPressed: () {},
+        //     icon: const Icon(Icons.menu, color: Colors.black),
+        //   ),
+        // ),
+        const SketchSideBar(),
         const SketchMenuBar()
             .animate()
             .fadeIn(duration: const Duration(milliseconds: 500))
