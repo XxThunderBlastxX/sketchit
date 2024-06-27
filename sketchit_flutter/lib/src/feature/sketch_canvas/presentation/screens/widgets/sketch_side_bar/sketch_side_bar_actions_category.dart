@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../bloc/sketch_bloc/sketch_bloc.dart';
 import 'sketch_side_bar_category.dart';
 
 class SketchSideBarActionsCategory extends StatelessWidget {
@@ -14,18 +16,18 @@ class SketchSideBarActionsCategory extends StatelessWidget {
         children: [
           IconButton(
             icon: const Icon(Icons.undo),
-            onPressed: () {},
             tooltip: 'Undo',
+            onPressed: () => context.read<SketchBloc>().add(UndoSketch()),
           ),
           IconButton(
             icon: const Icon(Icons.redo),
-            onPressed: () {},
             tooltip: 'Redo',
+            onPressed: () => context.read<SketchBloc>().add(RedoSketch()),
           ),
           IconButton(
             icon: const Icon(Icons.delete),
-            onPressed: () {},
             tooltip: 'Clear',
+            onPressed: () => context.read<SketchBloc>().add(ClearSketch()),
           ),
           // TODO : Implement save functionality
           // IconButton(
