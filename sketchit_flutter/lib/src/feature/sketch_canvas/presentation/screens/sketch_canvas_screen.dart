@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' hide MenuBar;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import '../bloc/side_bar_bloc/side_bar_bloc.dart';
 import '../bloc/sketch_bloc/sketch_bloc.dart';
 import '../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
 import 'sketch_canvas_desktop_screen.dart';
@@ -22,6 +23,9 @@ class CanvasScreen extends StatelessWidget {
           BlocProvider<SketchMenuBarBloc>(
             create: (context) => SketchMenuBarBloc(),
           ),
+          BlocProvider<SideBarBloc>(
+            create: (context) => SideBarBloc(),
+          )
         ],
         child: ScreenTypeLayout.builder(
           desktop: (context) => const SketchCanvasDesktopScreen(),

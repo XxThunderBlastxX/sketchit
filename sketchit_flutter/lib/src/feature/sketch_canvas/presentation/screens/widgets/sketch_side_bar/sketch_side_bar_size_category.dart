@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../../../../app/theme/theme.dart';
 import '../../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
@@ -25,13 +26,21 @@ class SketchSideBarSizeCategory extends StatelessWidget {
                     'Pen Size',
                     style: AppTheme.theme.textTheme.labelSmall,
                   ),
-                  Slider(
-                    value: state.strokeSize,
-                    min: 3,
-                    max: 20,
-                    onChanged: (size) => context
-                        .read<SketchMenuBarBloc>()
-                        .add(ChangeStrokeSize(size)),
+                  SizedBox(
+                    width: getValueForScreenType(
+                      context: context,
+                      desktop: 30.sw,
+                      tablet: 28.sw,
+                      mobile: 40.sw,
+                    ),
+                    child: Slider(
+                      value: state.strokeSize,
+                      min: 3,
+                      max: 20,
+                      onChanged: (size) => context
+                          .read<SketchMenuBarBloc>()
+                          .add(ChangeStrokeSize(size)),
+                    ),
                   ),
                 ],
               ),
@@ -42,13 +51,21 @@ class SketchSideBarSizeCategory extends StatelessWidget {
                     'Eraser Size',
                     style: AppTheme.theme.textTheme.labelSmall,
                   ),
-                  Slider(
-                    value: state.eraserSize,
-                    min: 5,
-                    max: 30,
-                    onChanged: (size) => context
-                        .read<SketchMenuBarBloc>()
-                        .add(ChangeEraserSize(size)),
+                  SizedBox(
+                    width: getValueForScreenType(
+                      context: context,
+                      desktop: 30.sw,
+                      tablet: 28.sw,
+                      mobile: 40.sw,
+                    ),
+                    child: Slider(
+                      value: state.eraserSize,
+                      min: 5,
+                      max: 30,
+                      onChanged: (size) => context
+                          .read<SketchMenuBarBloc>()
+                          .add(ChangeEraserSize(size)),
+                    ),
                   ),
                 ],
               ),

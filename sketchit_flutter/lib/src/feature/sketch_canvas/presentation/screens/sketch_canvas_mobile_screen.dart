@@ -3,7 +3,9 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../../app/theme/theme.dart';
 import 'widgets/drawing_canvas/drawing_canvas.dart';
+import 'widgets/side_bar_button.dart';
 import 'widgets/sketch_menu_bar/sketch_menu_bar.dart';
+import 'widgets/sketch_side_bar/sketch_side_bar.dart';
 
 class SketchCanvasMobileScreen extends StatelessWidget {
   const SketchCanvasMobileScreen({super.key});
@@ -13,6 +15,11 @@ class SketchCanvasMobileScreen extends StatelessWidget {
     return Stack(
       children: [
         const DrawingCanvas(),
+        const SideBarButton()
+            .animate()
+            .fadeIn(duration: const Duration(milliseconds: 500))
+            .moveX(begin: -35, end: 0),
+        const SketchSideBar(),
         const SketchMenuBar()
             .animate()
             .fadeIn(duration: const Duration(milliseconds: 500))

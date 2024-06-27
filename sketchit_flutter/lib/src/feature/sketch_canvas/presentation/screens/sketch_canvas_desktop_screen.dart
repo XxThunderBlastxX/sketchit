@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:sketchit_flutter/src/feature/sketch_canvas/presentation/screens/widgets/side_bar_button.dart';
 
 import '../../../../app/theme/theme.dart';
 import 'widgets/drawing_canvas/drawing_canvas.dart';
@@ -14,13 +15,10 @@ class SketchCanvasDesktopScreen extends StatelessWidget {
     return Stack(
       children: [
         const DrawingCanvas(),
-        // Align(
-        //   alignment: Alignment.topLeft,
-        //   child: IconButton(
-        //     onPressed: () {},
-        //     icon: const Icon(Icons.menu, color: Colors.black),
-        //   ),
-        // ),
+        const SideBarButton()
+            .animate()
+            .fadeIn(duration: const Duration(milliseconds: 500))
+            .moveX(begin: -35, end: 0),
         const SketchSideBar(),
         const SketchMenuBar()
             .animate()
@@ -45,7 +43,7 @@ class SketchCanvasDesktopScreen extends StatelessWidget {
         )
             .animate()
             .fadeIn(duration: const Duration(milliseconds: 500))
-            .moveX(begin: 25, end: 0),
+            .moveX(begin: 35, end: 0),
       ],
     );
   }

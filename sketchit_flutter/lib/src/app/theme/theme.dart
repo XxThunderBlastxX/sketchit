@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static Color primaryColor = const Color(0xFF5A478C);
+  static Color primaryColor = const Color(0xFF1c63ed);
 
   static ThemeData theme = ThemeData(
       elevatedButtonTheme: ElevatedButtonThemeData(
