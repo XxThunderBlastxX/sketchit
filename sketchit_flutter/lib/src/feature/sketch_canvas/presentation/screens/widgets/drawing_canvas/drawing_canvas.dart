@@ -26,7 +26,9 @@ class DrawingCanvas extends StatelessWidget {
       color: menuBarState.sketchMode == SketchMode.erase
           ? menuBarState.eraserColor
           : menuBarState.strokeColor,
-      strokeWidth: 2.0,
+      strokeWidth: menuBarState.sketchMode == SketchMode.erase
+          ? menuBarState.eraserSize
+          : menuBarState.strokeSize,
       offsetList: [transformedOffset],
       sketchMode: menuBarState.sketchMode,
     );
@@ -48,7 +50,9 @@ class DrawingCanvas extends StatelessWidget {
       color: menuBarState.sketchMode == SketchMode.erase
           ? menuBarState.eraserColor
           : menuBarState.strokeColor,
-      strokeWidth: 2.0,
+      strokeWidth: menuBarState.sketchMode == SketchMode.erase
+          ? menuBarState.eraserSize
+          : menuBarState.strokeSize,
       offsetList: List.from(state.currentSketchStroke.offsetList)
         ..add(transformedOffset),
       sketchMode: menuBarState.sketchMode,

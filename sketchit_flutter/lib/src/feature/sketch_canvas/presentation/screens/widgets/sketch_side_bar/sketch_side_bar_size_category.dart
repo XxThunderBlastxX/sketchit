@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sketchit_flutter/src/app/theme/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../app/theme/theme.dart';
+import '../../../bloc/sketch_menu_bar_bloc/sketch_menu_bar_bloc.dart';
 import 'sketch_side_bar_category.dart';
 
 class SketchSideBarSizeCategory extends StatelessWidget {
@@ -8,40 +10,52 @@ class SketchSideBarSizeCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SketchSideBarCategory(
-      title: 'Size',
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return BlocBuilder<SketchMenuBarBloc, SketchMenuBarState>(
+      builder: (context, state) {
+        return SketchSideBarCategory(
+          title: 'Size',
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Pen Size',
-                style: AppTheme.theme.textTheme.labelSmall,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Pen Size',
+                    style: AppTheme.theme.textTheme.labelSmall,
+                  ),
+                  Slider(
+                    value: state.strokeSize,
+                    min: 3,
+                    max: 20,
+                    onChanged: (size) => context
+                        .read<SketchMenuBarBloc>()
+                        .add(ChangeStrokeSize(size)),
+                  ),
+                ],
               ),
-              Slider(
-                value: 0.5,
-                onChanged: (value) {},
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Eraser Size',
+                    style: AppTheme.theme.textTheme.labelSmall,
+                  ),
+                  Slider(
+                    value: state.eraserSize,
+                    min: 5,
+                    max: 30,
+                    onChanged: (size) => context
+                        .read<SketchMenuBarBloc>()
+                        .add(ChangeEraserSize(size)),
+                  ),
+                ],
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Eraser Size',
-                style: AppTheme.theme.textTheme.labelSmall,
-              ),
-              Slider(
-                value: 0.5,
-                onChanged: (value) {},
-              ),
-            ],
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

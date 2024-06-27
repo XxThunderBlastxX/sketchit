@@ -14,6 +14,8 @@ class SketchMenuBarBloc extends Bloc<SketchMenuBarEvent, SketchMenuBarState> {
           strokeColor: Colors.black,
           sketchMode: SketchMode.draw,
           eraserColor: AppTheme.theme.colorScheme.surface,
+          strokeSize: 4.0,
+          eraserSize: 10.0,
         )) {
     on<ChangeColor>((event, emit) {
       emit(state.copyWith(
@@ -24,6 +26,18 @@ class SketchMenuBarBloc extends Bloc<SketchMenuBarEvent, SketchMenuBarState> {
     on<ChangeSketchMode>((event, emit) {
       emit(state.copyWith(
         sketchMode: event.sketchMode,
+      ));
+    });
+
+    on<ChangeEraserSize>((event, emit) {
+      emit(state.copyWith(
+        eraserSize: event.eraserSize,
+      ));
+    });
+
+    on<ChangeStrokeSize>((event, emit) {
+      emit(state.copyWith(
+        strokeSize: event.strokeSize,
       ));
     });
   }
