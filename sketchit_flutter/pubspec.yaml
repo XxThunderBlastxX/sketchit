@@ -1,4 +1,4 @@
-name: sketchit_flutter
+name: sketch_it
 description: A new Flutter project with Serverpod.
 
 # The following line prevents the package from being accidentally published to
@@ -43,6 +43,8 @@ dependencies:
   custom_mouse_cursor: ^1.1.2
   responsive_builder: ^0.7.0
   url_launcher: ^6.3.0
+  icons_launcher: ^2.1.7
+  flutter_native_splash: ^2.4.0
 
 dev_dependencies:
   flutter_lints: '>=3.0.0 <5.0.0'

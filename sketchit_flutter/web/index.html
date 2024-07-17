@@ -1,61 +1,87 @@
-<!doctype html>
-<html>
-    <head>
-        <!--
-        If you are serving your web app in a path other than the root, change the
-        href value below to reflect the base path you are serving from.
+<html lang="en">
+<head>
+    <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-        The path provided below has to start and end with a slash "/" in order for
-        it to work correctly.
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-        For more details:
-        * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-        This is a placeholder for base href that will be replaced by the value of
-        the `--base-href` argument provided to `flutter build`.
-      -->
-        <base href="$FLUTTER_BASE_HREF" />
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+    <base href="$FLUTTER_BASE_HREF"/>
 
-        <meta charset="UTF-8" />
-        <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
-        <meta
-            name="description"
+    <meta charset="UTF-8"/>
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+    <meta
             content="SketchIt is a collaborative whiteboard that lets you draw your ideas and collaborate in realtime with your mates."
-        />
+            name="description"
+    />
 
-        <!-- iOS meta tags & icons -->
-        <meta content="yes" name="apple-mobile-web-app-capable" />
-        <meta content="black" name="apple-mobile-web-app-status-bar-style" />
-        <meta content="sketchit_flutter" name="apple-mobile-web-app-title" />
-        <link href="icons/Icon-192.png" rel="apple-touch-icon" />
+    <!-- iOS meta tags & icons -->
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="sketchit_flutter" name="apple-mobile-web-app-title"/>
+    <link href="icons/Icon-192.png" rel="apple-touch-icon"/>
 
-        <!-- Favicon -->
-        <link href="favicon.png" rel="icon" type="image/png" />
+    <!-- OG Tags -->
+    <meta content="Sketch It!" property="og:title">
+    <meta content="SketchIt is a collaborative whiteboard that lets you draw your ideas and collaborate in realtime with your mates."
+          property="og:description">
+    <meta content="https://sketchit.koustav.dev/" property="og:url">
+    <meta content="https://sketchit.koustav.dev/banner.png" property="og:image">
+    <meta content="website" property="og:type">
 
-        <title>Sketch It!</title>
-        <link href="manifest.json" rel="manifest" />
+    <!-- Facebook Meta Tags -->
+    <meta content="https://sketchit.koustav.dev" property="og:url">
+    <meta content="website" property="og:type">
+    <meta content="Sketch It" property="og:title">
+    <meta content="SketchIt is a collaborative whiteboard that lets you draw your ideas and collaborate in realtime with your mates."
+          property="og:description">
+    <meta content="https://sketchit.koustav.dev/banner.png" property="og:image">
 
-        <link href="styles.css" rel="stylesheet" />
-    </head>
 
-    <body>
-        <!--Added mine code-->
-        <div id="loader-wrapper">
-            <h1 class="title">Loading</h1>
-            <div class="rainbow-marker-loader"></div>
-        </div>
-        <div id="app">
-            <script async src="flutter_bootstrap.js"></script>
-        </div>
-        <script>
-            // Listen for the 'flutter-first-frame' event
-            window.addEventListener("flutter-first-frame", function () {
-                // Hide the loader
-                document.getElementById("loader-wrapper").style.display =
-                    "none";
-                // Show the app container
-                document.getElementById("app").style.display = "block";
-            });
-        </script>
-    </body>
+    <!-- Twitter Meta Tags -->
+    <meta content="Sketch It!" name="twitter:title">
+    <meta content="https://sketchit.koustav.dev" name="twitter:card">
+    <meta content="sketchit.koustav.dev" property="twitter:domain">
+    <meta content="https://sketchit.koustav.dev" property="twitter:url">
+    <meta content="SketchIt is a collaborative whiteboard that lets you draw your ideas and collaborate in realtime with your mates.">
+    <meta content="SketchIt is a collaborative whiteboard that lets you draw your ideas and collaborate in realtime with your mates."
+          name="twitter:description">
+    <meta content="https://sketchit.koustav.dev/banner.png" name="twitter:image">
+
+    <!-- Favicon -->
+    <link href="favicon.png" rel="icon" type="image/png"/>
+
+    <title>Sketch It!</title>
+    <link href="manifest.json" rel="manifest"/>
+
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+
+<body>
+<!--Added mine code-->
+<div id="loader-wrapper">
+    <h1 class="title">Loading</h1>
+    <div class="rainbow-marker-loader"></div>
+</div>
+<div id="app">
+    <script async src="flutter_bootstrap.js"></script>
+</div>
+<script>
+    // Listen for the 'flutter-first-frame' event
+    window.addEventListener("flutter-first-frame", function () {
+        // Hide the loader
+        document.getElementById("loader-wrapper").style.display =
+            "none";
+        // Show the app container
+        document.getElementById("app").style.display = "block";
+    });
+</script>
+</body>
 </html>

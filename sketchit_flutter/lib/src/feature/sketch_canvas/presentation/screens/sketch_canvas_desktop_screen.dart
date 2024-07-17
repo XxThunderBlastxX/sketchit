@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:sketchit_flutter/src/feature/sketch_canvas/presentation/screens/widgets/side_bar_button.dart';
 
 import '../../../../app/theme/theme.dart';
 import 'widgets/drawing_canvas/drawing_canvas.dart';
+import 'widgets/side_bar_button.dart';
 import 'widgets/sketch_menu_bar/sketch_menu_bar.dart';
 import 'widgets/sketch_side_bar/sketch_side_bar.dart';
 
