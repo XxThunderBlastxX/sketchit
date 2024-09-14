@@ -24,7 +24,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  serverpod_flutter: 2.0.1
+  serverpod_flutter: 2.1.1
   sketchit_client:
     path: ../sketchit_client
 

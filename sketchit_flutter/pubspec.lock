@@ -308,18 +308,18 @@ packages:
     dependency: transitive
     description:
       name: leak_tracker
-      sha256: "7f0df31977cb2c0b88585095d168e689669a2cc9b97c309665e3386f3e9d341a"
+      sha256: "3f87a60e8c63aecc975dda1ceedbc8f24de75f09e4856ea27daf8958f2f0ce05"
       url: "https://pub.dev"
     source: hosted
-    version: "10.0.4"
+    version: "10.0.5"
   leak_tracker_flutter_testing:
     dependency: transitive
     description:
       name: leak_tracker_flutter_testing
-      sha256: "06e98f569d004c1315b991ded39924b21af84cf14cc94791b8aea337d25b57f8"
+      sha256: "932549fb305594d82d7183ecd9fa93463e9914e1b67cacc34bc40906594a1806"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.3"
+    version: "3.0.5"
   leak_tracker_testing:
     dependency: transitive
     description:
@@ -356,18 +356,18 @@ packages:
     dependency: transitive
     description:
       name: material_color_utilities
-      sha256: "0e0a020085b65b6083975e499759762399b4475f766c21668c4ecca34ea74e5a"
+      sha256: f7142bb1154231d7ea5f96bc7bde4bda2a0945d2806bb11670e30b850d56bdec
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.0"
+    version: "0.11.1"
   meta:
     dependency: transitive
     description:
       name: meta
-      sha256: "7687075e408b093f36e6bbf6c91878cc0d4cd10f409506f7bc996f68220b9136"
+      sha256: bdb68674043280c3428e9ec998512fb681678676b3c54e773629ffe74419f8c7
       url: "https://pub.dev"
     source: hosted
-    version: "1.12.0"
+    version: "1.15.0"
   nested:
     dependency: transitive
     description:
@@ -488,46 +488,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.0"
-  serverpod_auth_client:
-    dependency: transitive
-    description:
-      name: serverpod_auth_client
-      sha256: "9be048b5d1c8bcd9907ad6321b5495bdbb8db3263142d143101b9d1828fd1a53"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
-  serverpod_chat_client:
-    dependency: transitive
-    description:
-      name: serverpod_chat_client
-      sha256: "5073a7744856a9d13c4419d26e6a0b8773f8161adc7729cd470e6c58138c5d0a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
   serverpod_client:
     dependency: transitive
     description:
       name: serverpod_client
-      sha256: "02989c891ebcd9e05a5a63312a31ecc221d0d88dcf83ec372cd324f7c3c92c69"
+      sha256: "58488119fc7d5b3d182197f7cd14280587bcb4842b49e72567c4513cf908bee5"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.1.1"
   serverpod_flutter:
     dependency: "direct main"
     description:
       name: serverpod_flutter
-      sha256: aac54eec5dc8f146464af7681750f729078740981e0efed118fa05d9dc3fc520
+      sha256: cb53f58e7d3c1f423d0e0a16a782a2a80976cb5a692ceee9bfc81f5e1b5be9b4
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.1.1"
   serverpod_serialization:
     dependency: transitive
     description:
       name: serverpod_serialization
-      sha256: a1738598c6230d9f5c9630f762df5ba366d2129d8af4076718226059c19d112a
+      sha256: "5233c6a40deeb3e83066d984fa8d7e8c8c3c74eef67a6cdd8f9371a66f1183d3"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.1.1"
   sketchit_client:
     dependency: "direct main"
     description:
@@ -592,10 +576,10 @@ packages:
     dependency: transitive
     description:
       name: test_api
-      sha256: "9955ae474176f7ac8ee4e989dadfb411a58c30415bcfb648fa04b2b8a03afa7f"
+      sha256: "5b8a98dafc4d5c4c9c72d8b31ab2b23fc13422348d2997120294d3bac86b4ddb"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.0"
+    version: "0.7.2"
   typed_data:
     dependency: transitive
     description:
@@ -720,10 +704,10 @@ packages:
     dependency: transitive
     description:
       name: vm_service
-      sha256: "3923c89304b715fb1eb6423f017651664a03bf5f4b29983627c4da791f74a4ec"
+      sha256: "5c5f338a667b4c644744b661f309fb8080bb94b18a7e91ef1dbd343bed00ed6d"
       url: "https://pub.dev"
     source: hosted
-    version: "14.2.1"
+    version: "14.2.5"
   web:
     dependency: transitive
     description:

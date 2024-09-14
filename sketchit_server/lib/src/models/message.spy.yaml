@@ -1,0 +1,8 @@
+### Represents a message in the system
+class: ChannelMessage
+
+fields:
+  ### The id of the channel
+  channelId: String
+  ### message in the channel
+  message: String

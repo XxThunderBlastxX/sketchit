@@ -1,5 +1,4 @@
 import 'package:serverpod/serverpod.dart';
-import 'package:serverpod_chat_server/serverpod_chat_server.dart' as chat;
 import 'package:sketchit_server/src/web/routes/root.dart';
 
 import 'src/generated/endpoints.dart';
@@ -28,10 +27,6 @@ void run(List<String> args) async {
     RouteStaticDirectory(serverDirectory: 'static', basePath: '/'),
     '/*',
   );
-
-  chat.ChatConfig.set(chat.ChatConfig(
-    postMessagesGlobally: false,
-  ));
 
   // Start the server.
   await pod.start();
